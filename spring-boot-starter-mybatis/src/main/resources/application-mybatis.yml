@@ -1,0 +1,67 @@
+# application properties
+#app:
+#  datasource:
+#    name: [app-name]
+#    host: mysql-dev
+#    port: 3306
+#    username: kfman
+#    password: [password hash]
+#    druid:
+#      public-key:
+
+spring:
+  # 数据库配置
+  datasource:
+    name: ${app.datasource.name}
+    url: jdbc:mysql://${app.datasource.host:mysql-${spring.profiles.active}}:${app.datasource.port:3306}/${app.datasource.name}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: ${app.datasource.username}
+    password: ${app.datasource.password}
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    druid:
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-open-prepared-statements: 20
+      #检测连接池泄露
+      remove-abandoned: true
+      remove-abandoned-timeout: 1800
+      log-abandoned: true
+      # encrypt password
+      connection-properties: "config.decrypt=true;config.decrypt.key=${app.datasource.druid.public-key};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+      use-global-data-source-stat: true
+      # WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        enabled: true #是否启用StatFilter默认值true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid2/*"
+        session-stat-enable:
+        session-stat-max-count:
+        principal-session-name:
+        principal-cookie-name:
+        profile-enable:
+
+      # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        enabled: true #是否启用StatViewServlet默认值true
+        url-pattern: "/druid/*"
+        reset-enable: false
+        login-username: admin
+        login-password: admin321
+        allow: ""
+        deny: ""
+
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
