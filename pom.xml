@@ -19,6 +19,13 @@
         <skip.integration-tests>true</skip.integration-tests>
         <skip.unit-tests>false</skip.unit-tests>
         <starters.version>0.0.1-SNAPSHOT</starters.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <lombok.version>1.16.12</lombok.version>
+
+        <!--grpc-->
+        <os.maven.plugin.version>1.4.1.Final</os.maven.plugin.version>
+        <protobuf.maven.plugin.version>0.5.0</protobuf.maven.plugin.version>
+        <grpc.version>1.9.0</grpc.version>
     </properties>
 
     <modules>
@@ -26,6 +33,7 @@
         <module>spring-boot-starter-util</module>
         <module>spring-boot-starter-validate</module>
         <module>spring-boot-starter-redis</module>
+        <module>spring-boot-starter-logging </module>
     </modules>
 
     <dependencies>

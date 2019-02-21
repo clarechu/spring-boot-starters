@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.com.siss</groupId>
+        <artifactId>spring-boot-starters</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>cn.com.siss</groupId>
+    <artifactId>spring-boot-starter-grpc</artifactId>
+    <version>${starters.version}</version>
+    <name>spring-boot-starter-grpc</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-all</artifactId>
+            <version>${grpc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>repo.spring.io.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+        </repository>
+    </repositories>
+</project>

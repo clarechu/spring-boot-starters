@@ -1,0 +1,25 @@
+
+logging:
+  level:
+    org.springframework: info
+    cn.vpclub: info
+  pattern:
+    console: "%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{64})  - %msg%n"
+
+---
+
+spring:
+  profiles: local
+
+logging:
+  level:
+    cn.vpclub: debug
+
+---
+
+spring:
+  profiles: prod
+
+logging:
+  level:
+    cn.vpclub: warn
