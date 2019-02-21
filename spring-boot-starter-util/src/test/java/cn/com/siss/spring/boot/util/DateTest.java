@@ -1,6 +1,8 @@
 package cn.com.siss.spring.boot.util;
 
 import cn.com.siss.spring.boot.util.date.DateUtil;
+import cn.com.siss.spring.boot.util.other.IdWorker;
+import cn.com.siss.spring.boot.util.other.KeyWorker;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,4 +27,11 @@ public class DateTest {
         nowTime = DateUtil.FormatDate();
         System.out.println(nowTime);
     }
+
+    @Test
+    public void getId() {
+        System.out.println(KeyWorker.nextId());
+    }
+
+
 }
