@@ -1,0 +1,10 @@
+spring:
+  redis:
+    host: ${app.redis.host}
+    port: ${app.redis.host:6379}
+    password: ${app.redis.password}
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0

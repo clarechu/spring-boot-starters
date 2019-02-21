@@ -1,7 +1,6 @@
 package cn.com.siss.spring.boot.util;
 
 import cn.com.siss.spring.boot.util.date.DateUtil;
-import cn.com.siss.spring.boot.util.other.IdWorker;
 import cn.com.siss.spring.boot.util.other.KeyWorker;
 import org.junit.Test;
 import org.junit.runner.RunWith;
