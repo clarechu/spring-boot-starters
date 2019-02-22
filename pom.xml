@@ -18,6 +18,7 @@
         <java.version>1.8</java.version>
         <skip.integration-tests>true</skip.integration-tests>
         <skip.unit-tests>false</skip.unit-tests>
+        <maven-archetype.version>2.4</maven-archetype.version>
         <starters.version>0.0.1-SNAPSHOT</starters.version>
         <slf4j.version>1.7.21</slf4j.version>
         <lombok.version>1.16.12</lombok.version>
@@ -34,6 +35,8 @@
         <module>spring-boot-starter-validate</module>
         <module>spring-boot-starter-redis</module>
         <module>spring-boot-starter-logging </module>
+        <module>spring-boot-starter-grpc </module>
+        <module>spring-boot-starter-dubbo </module>
     </modules>
 
     <dependencies>
@@ -98,6 +101,15 @@
                 <directory>${project.basedir}/src/test/resources</directory>
             </testResource>
         </testResources>
+
+
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>${os.maven.plugin.version}</version>
+            </extension>
+        </extensions>
 
         <pluginManagement>
             <!-- NOTE: These plugins will be removed from future versions of the super POM -->
@@ -203,6 +215,27 @@
                         <resultsFolder>${project.basedir}/target/gatling</resultsFolder>
                         <simulationsFolder>${project.basedir}/src/test/scala</simulationsFolder>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.xolstice.maven.plugins</groupId>
+                    <artifactId>protobuf-maven-plugin</artifactId>
+                    <version>${protobuf.maven.plugin.version}</version>
+                    <configuration>
+                        <protocArtifact>com.google.protobuf:protoc:3.1.0-build2:exe:${os.detected.classifier}
+                        </protocArtifact>
+                        <pluginId>grpc-java</pluginId>
+                        <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.0.0:exe:${os.detected.classifier}
+                        </pluginArtifact>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal>
+                                <goal>compile-custom</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
