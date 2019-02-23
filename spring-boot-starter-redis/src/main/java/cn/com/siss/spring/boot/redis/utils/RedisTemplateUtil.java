@@ -72,7 +72,7 @@ public class RedisTemplateUtil {
     public static Boolean remove(RedisTemplate redisTemplate, final String key) {
         Boolean flag = false;
         if (exists(redisTemplate,key)) {
-            flag = redisTemplate.delete(key);
+            redisTemplate.delete(key);
         }
         return flag;
     }

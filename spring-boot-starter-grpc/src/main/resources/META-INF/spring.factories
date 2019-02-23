@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.com.siss.spring.boot.grpc.autoconfigure.GRpcAutoConfiguration

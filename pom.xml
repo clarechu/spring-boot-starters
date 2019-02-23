@@ -1,25 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.3.RELEASE</version>
+        <version>1.5.4.RELEASE</version>
     </parent>
     <groupId>cn.com.siss</groupId>
     <artifactId>spring-boot-starters</artifactId>
+
+
+    <modules>
+        <module>spring-boot-starter-dubbo</module>
+        <module>spring-boot-starter-mybatis</module>
+        <module>spring-boot-starter-grpc</module>
+        <module>spring-boot-starter-logging</module>
+        <module>spring-boot-starter-redis</module>
+        <module>spring-boot-starter-validate</module>
+        <module>spring-boot-starter-core</module>
+        <module>spring-boot-starter-util</module>
+        <module>spring-boot-starter-validate</module>
+    </modules>
+    <!--
+        NOTES:
+            please change each starters parent version once version is changed
+    -->
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-starters</name>
     <packaging>pom</packaging>
 
-
     <properties>
+        <!--jdk-->
         <java.version>1.8</java.version>
-        <skip.integration-tests>true</skip.integration-tests>
-        <skip.unit-tests>false</skip.unit-tests>
+
+        <!--maven-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <exec-maven-plugin.version>1.4.0</exec-maven-plugin.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
+        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
         <maven-archetype.version>2.4</maven-archetype.version>
-        <starters.version>0.0.1-SNAPSHOT</starters.version>
+
+        <!--testing-->
+        <junit.version>4.12</junit.version>
+        <powermock.version>1.6.6</powermock.version>
+        <testng.version>6.10</testng.version>
+        <rest-assured.version>3.0.1</rest-assured.version>
+        <skip.unit-tests>false</skip.unit-tests>
+        <skip.integration-tests>true</skip.integration-tests>
+        <!-- TODO: netty version should be same with the netty version in inside grpc-java -->
+        <gatling-charts-highcharts.version>3.0.0-SNAPSHOT</gatling-charts-highcharts.version>
+        <gatling-plugin.version>3.0.0-SNAPSHOT</gatling-plugin.version>
+
+        <!--database-->
+        <druid.version>1.0.26</druid.version>
+        <mybatis.hazelcast.version>1.1.1</mybatis.hazelcast.version>
+        <mybatis.spring.version>1.3.0</mybatis.spring.version>
+        <org.mybatis.starter.version>1.1.1</org.mybatis.starter.version>
+        <mysql.connector.version>5.1.40</mysql.connector.version>
+        <pagehelper.version>4.1.6</pagehelper.version>
+        <mybatis-plus.version>2.0.5</mybatis-plus.version>
+        <!--logging-->
         <slf4j.version>1.7.21</slf4j.version>
         <lombok.version>1.16.12</lombok.version>
 
@@ -27,38 +70,498 @@
         <os.maven.plugin.version>1.4.1.Final</os.maven.plugin.version>
         <protobuf.maven.plugin.version>0.5.0</protobuf.maven.plugin.version>
         <grpc.version>1.9.0</grpc.version>
+
+        <!--cache-->
+        <hazelcast.version>3.8.3</hazelcast.version>
+        <mybatis.hazelcast.version>1.1.1</mybatis.hazelcast.version>
+        <hazelcast-kubernetes-version>1.1.1-SNAPSHOT</hazelcast-kubernetes-version>
+
+        <!--spring-->
+        <spring.version>4.3.11.RELEASE</spring.version>
+        <spring.integration.version>4.3.11.RELEASE</spring.integration.version>
+        <spring.integration.kafka.version>2.1.0.RELEASE</spring.integration.kafka.version>
+
+        <!--message queue-->
+        <spring.kafka.test.version>1.1.1.RELEASE</spring.kafka.test.version>
+        <org.springframework.kafka.version>1.1.1.RELEASE</org.springframework.kafka.version>
+        <com.fasterxml.jackson.core>2.8.1</com.fasterxml.jackson.core>
+
+        <!--service discovery-->
+        <zkclient.version>0.8</zkclient.version>
+
+        <!-- security - shiro -->
+        <spring.webmvc.version>4.3.2.RELEASE</spring.webmvc.version>
+        <shiro.version>1.4.0</shiro.version>
+        <servlet.api.version>2.5</servlet.api.version>
+
+        <!-- swagger -->
+        <swagger.version>2.6.1</swagger.version>
+
+        <!-- axon framework and its related modules -->
+        <axon.version>3.1.2</axon.version>
+        <jackson-datatype.version>2.9.0</jackson-datatype.version>
+        <jgroups-kubernetes.version>1.0.4-SNAPSHOT</jgroups-kubernetes.version>
+        <quartz.version>2.2.1</quartz.version>
+        <jsr310.version>2.6.5</jsr310.version>
+
+        <!--quartz-->
+        <quartz.version>2.2.1</quartz.version>
+
+        <!-- druid -->
+        <druid-spring-boot-starter.version>1.1.3</druid-spring-boot-starter.version>
+
+        <!--mongodb-->
+        <mongodb-starter.version>1.5.9.RELEASE</mongodb-starter.version>
+
+        <!-- guava -->
+        <guava.version>19.0</guava.version>
+
+        <!-- utils -->
+        <spring.data.version>1.11.4.RELEASE</spring.data.version>
+        <javaee.api.version>7.0</javaee.api.version>
+        <commons.io.version>2.4</commons.io.version>
+        <commons.beanutils.version>1.9.2</commons.beanutils.version>
+        <commons.lang.version>2.6</commons.lang.version>
+        <commons.lang3.version>3.4</commons.lang3.version>
+        <commons.net.version>3.3</commons.net.version>
+        <commons.codec.version>1.10</commons.codec.version>
+        <commons.httpclient.version>3.1</commons.httpclient.version>
+        <httpcomponents.httpclient.version>4.5.1</httpcomponents.httpclient.version>
+        <httpcomponents.httpmime.version>4.5.2</httpcomponents.httpmime.version>
+        <google.zxing.core.version>3.2.1</google.zxing.core.version>
+        <google.zxing.javase.version>3.2.1</google.zxing.javase.version>
+        <jackson.databind.version>2.6.5</jackson.databind.version>
+        <poi.version>3.10-FINAL</poi.version>
+
+        <!-- module version -->
+        <starters.version>1.5.20-SNAPSHOT</starters.version>
+
     </properties>
 
-    <modules>
-        <module>spring-boot-starter-mybatis</module>
-        <module>spring-boot-starter-util</module>
-        <module>spring-boot-starter-validate</module>
-        <module>spring-boot-starter-redis</module>
-        <module>spring-boot-starter-logging </module>
-        <module>spring-boot-starter-grpc </module>
-        <module>spring-boot-starter-dubbo </module>
-    </modules>
-
     <dependencies>
+        <!--spring boot common starters-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <!--testing-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-testng</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <properties>
+                <skip.unit-tests>false</skip.unit-tests>
+                <skip.integration-tests>false</skip.integration-tests>
+            </properties>
+        </profile>
+    </profiles>
+
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!--spring-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <!--hazelcast -->
+            <dependency>
+                <groupId>com.hazelcast</groupId>
+                <artifactId>hazelcast-all</artifactId>
+                <version>${hazelcast.version}</version>
+            </dependency>
+
+            <!-- grpc -->
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-all</artifactId>
+                <version>${grpc.version}</version>
+            </dependency>
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${org.mybatis.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis.spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.caches</groupId>
+                <artifactId>mybatis-hazelcast</artifactId>
+                <version>${mybatis.hazelcast.version}</version>
+            </dependency>
+
+            <!-- kafka -->
+            <dependency>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-kafka</artifactId>
+                <version>${spring.integration.kafka.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-core</artifactId>
+                <version>${spring.integration.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${org.springframework.kafka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka-test</artifactId>
+                <version>${org.springframework.kafka.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${com.fasterxml.jackson.core}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${com.fasterxml.jackson.core}</version>
+            </dependency>
+            <!-- shiro -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-web</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-hazelcast</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-quartz</artifactId>
+                <version>${shiro.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!--druid-spring-boot-starter-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--quartz-->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz-jobs</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+
+            <!--axon framework-->
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-core</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-spring</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-spring-boot-autoconfigure</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-amqp</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-mongo</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-spring-boot-starter</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-spring-boot-starter-jgroups</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jgroups.kubernetes</groupId>
+                <artifactId>jgroups-kubernetes</artifactId>
+                <version>${jgroups-kubernetes.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jsr310.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.hazelcast</groupId>
+                <artifactId>hazelcast-kubernetes</artifactId>
+                <version>${hazelcast-kubernetes-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.gatling.highcharts</groupId>
+                <artifactId>gatling-charts-highcharts</artifactId>
+                <version>${gatling-charts-highcharts.version}</version>
+            </dependency>
+
+            <!-- utils -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${javaee.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons.beanutils.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons.net.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons.codec.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${commons.httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons.lang.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpcomponents.httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${httpcomponents.httpmime.version}</version>
+            </dependency>
+
+            <!-- QRCode Begin -->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${google.zxing.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>${google.zxing.javase.version}</version>
+            </dependency>
+            <!-- QRCode End -->
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons.lang.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>${nexus.releases}</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>${nexus.snapshots}</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -102,7 +605,6 @@
             </testResource>
         </testResources>
 
-
         <extensions>
             <extension>
                 <groupId>kr.motd.maven</groupId>
@@ -143,6 +645,18 @@
                     <groupId>org.xolstice.maven.plugins</groupId>
                     <artifactId>protobuf-maven-plugin</artifactId>
                     <version>${protobuf.maven.plugin.version}</version>
+                    <configuration>
+                        <!--
+                          The version of protoc must match protobuf-java. If you don't depend on
+                          protobuf-java directly, you will be transitively depending on the
+                          protobuf-java version that grpc depends on.
+                        -->
+                        <protocArtifact>com.google.protobuf:protoc:3.1.0-build2:exe:${os.detected.classifier}
+                        </protocArtifact>
+                        <pluginId>grpc-java</pluginId>
+                        <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.0.0:exe:${os.detected.classifier}
+                        </pluginArtifact>
+                    </configuration>
                     <executions>
                         <execution>
                             <goals>
@@ -216,29 +730,7 @@
                         <simulationsFolder>${project.basedir}/src/test/scala</simulationsFolder>
                     </configuration>
                 </plugin>
-
-                <plugin>
-                    <groupId>org.xolstice.maven.plugins</groupId>
-                    <artifactId>protobuf-maven-plugin</artifactId>
-                    <version>${protobuf.maven.plugin.version}</version>
-                    <configuration>
-                        <protocArtifact>com.google.protobuf:protoc:3.1.0-build2:exe:${os.detected.classifier}
-                        </protocArtifact>
-                        <pluginId>grpc-java</pluginId>
-                        <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.0.0:exe:${os.detected.classifier}
-                        </pluginArtifact>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>compile</goal>
-                                <goal>compile-custom</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
 </project>
