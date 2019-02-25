@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.com.siss.spring.boot.mybatis.autoconfigration.DatasourceConfiguration,\
+cn.com.siss.spring.boot.mybatis.autoconfigration.DruidMonitorConfiguration

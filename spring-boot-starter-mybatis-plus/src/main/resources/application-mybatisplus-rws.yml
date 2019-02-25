@@ -1,0 +1,72 @@
+# application properties
+#app:
+#  datasource:
+#    name: [app-name]
+#    host: mysql-[profile]
+#    port: 3306
+#    username: [username]
+#    password: [password hash]
+#    druid:
+#      public-key:
+
+
+
+mybatisplus:
+  enabled: true
+  rws:
+    enabled: true
+
+spring:
+  autoconfigure:
+    exclude:
+      # 多数据源场景会导致 `javax.sql.DataSource` 和 `org.springframework.boot.autoconfigure.jdbc.DataSourceInitializer`
+      # 循环依赖，所以需要手动排除 `org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration`
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    enabled: true
+    name: ${app.datasource.name}
+    type: com.alibaba.druid.pool.DruidDataSource
+    write:
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 1
+      min-idle: 10
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      # encrypt password
+      filters: config,stat,wall,log4j
+      connection-properties: "config.decrypt=true;config.decrypt.key=${app.datasource.druid.public-key};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+      use-global-data-source-stat: true
+      url: jdbc:mysql://${app.datasource.host:mysql-${spring.profiles.active}}:${app.datasource.port:3306}/${app.datasource.name:${app.project:moses}_${app.name}_${app.role}}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&verifyServerCertificate=false&useSSL=true
+      username: ${app.datasource.username}
+      password: ${app.datasource.password}
+
+    read:
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 1
+      min-idle: 10
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      # encrypt password
+      filters: config,stat,wall,log4j
+      connection-properties: "config.decrypt=true;config.decrypt.key=${app.datasource.druid.public-key};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+      use-global-data-source-stat: true
+      url: jdbc:mysql://${app.datasource.ro-host:mysql-ro-${spring.profiles.active}}:${app.datasource.port:3306}/${app.datasource.name:${app.project:moses}_${app.name}_${app.role}}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&verifyServerCertificate=false&useSSL=true
+      username: ${app.datasource.username}
+      password: ${app.datasource.password}
+

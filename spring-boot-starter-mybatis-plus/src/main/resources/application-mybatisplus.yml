@@ -1,0 +1,44 @@
+# application properties
+#app:
+#  datasource:
+#    name: [app-name]
+#    host: mysql-[profile]
+#    port: 3306
+#    username: [username]
+#    password: [password hash]
+#    druid:
+#      public-key:
+
+
+mybatisplus:
+  enabled: true
+  generic:
+    enabled: true
+
+spring:
+  # 数据库配置
+  datasource:
+    name: ${app.datasource.name}
+    url: jdbc:mysql://${app.datasource.host:mysql-${spring.profiles.active}}:${app.datasource.port:3306}/${app.datasource.name:${app.project:moses}_${app.name}_${app.role}}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: ${app.datasource.username}
+    password: ${app.datasource.password}
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid数据源
+    druid:
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-open-prepared-statements: 20
+      # encrypt password
+      filters: config,stat,wall,log4j
+      connection-properties: "config.decrypt=true;config.decrypt.key=${app.datasource.druid.public-key};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+      use-global-data-source-stat: true

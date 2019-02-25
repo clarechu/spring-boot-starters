@@ -3,6 +3,8 @@ spring:
     host: ${app.redis.host}
     port: ${app.redis.port:6379}
     password: ${app.redis.password}
+    cluster:
+      nodes:
     jedis:
       pool:
         max-active: 8
