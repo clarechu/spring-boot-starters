@@ -19,9 +19,7 @@ import org.springframework.context.annotation.DependsOn;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by johnd on 30/11/2016.
- */
+
 @ConditionalOnProperty(prefix = "mybatisplus.generic", name = "enabled", havingValue = "true")
 @Configuration
 @EnableConfigurationProperties({DataSourceProperties.class})
