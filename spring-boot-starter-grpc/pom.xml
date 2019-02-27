@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cn.vpclub</groupId>
+        <groupId>cn.com.siss</groupId>
         <artifactId>spring-boot-starters</artifactId>
-        <version>1.5.20-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>cn.com.siss</groupId>
     <artifactId>spring-boot-starter-grpc</artifactId>

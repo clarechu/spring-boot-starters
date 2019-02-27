@@ -21,6 +21,8 @@
         <module>spring-boot-starter-validate</module>
         <module>spring-boot-starter-core</module>
         <module>spring-boot-starter-util</module>
+        <module>spring-boot-starter-kafka</module>
+        <module>spring-boot-starter-mybatis-plus</module>
     </modules>
     <!--
         NOTES:

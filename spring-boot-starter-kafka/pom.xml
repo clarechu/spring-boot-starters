@@ -8,30 +8,24 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>cn.com.siss</groupId>
-    <artifactId>spring-boot-starter-redis</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-starter-redis</name>
+    <artifactId>spring-boot-starter-kafka</artifactId>
+    <version>${starters.version}</version>
+    <name>spring-boot-starter-kafka</name>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <!-- redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>5.1.5.RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
