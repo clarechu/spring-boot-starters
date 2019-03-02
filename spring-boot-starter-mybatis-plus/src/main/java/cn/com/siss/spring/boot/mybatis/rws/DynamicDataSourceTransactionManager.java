@@ -3,13 +3,6 @@ package cn.com.siss.spring.boot.mybatis.rws;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 
-/**
- *
- * 动态数据库源事物管理 DynamicDataSourceTransactionManager
- * @author John Deng
- *
- */
-
 public class DynamicDataSourceTransactionManager extends DataSourceTransactionManager {
 
     /**

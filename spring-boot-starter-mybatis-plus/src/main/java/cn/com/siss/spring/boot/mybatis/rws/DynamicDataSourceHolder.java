@@ -1,12 +1,5 @@
 package cn.com.siss.spring.boot.mybatis.rws;
 
-
-/**
- * 数据库源路由设置 DynamicDataSourceHolder
- * @author John Deng
- *
- */
-
 public final class DynamicDataSourceHolder {
 
     private static final ThreadLocal<DynamicDataSourceOptions> holder = new ThreadLocal<DynamicDataSourceOptions>();

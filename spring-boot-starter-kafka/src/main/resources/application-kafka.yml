@@ -1,0 +1,22 @@
+spring:
+  #auto.offset.reset: latest
+  #latest 从消费到的最新的offset位置开始消费
+  #earliest 从最初的offset位置开始消费，如果是新的topic话
+  #none 从当前produce生产的最新的offset开始消费，默认
+  kafka:
+    bootstrap-servers: kafka-${spring.profiles.active}:9092
+    consumer:
+      group-id: group.${app.project}.${spring.profiles.active}
+      enable-auto-commit: false
+      session-timeout-ms: 15000
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      retries: 0
+      batch.size: 16384
+      linger.ms: 1
+      acks: 1
+      buffer.memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

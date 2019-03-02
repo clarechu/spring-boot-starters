@@ -8,11 +8,6 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 动态数据库源 DynamicDataSource, 继承 AbstractRoutingDataSource
- * @author John Deng
- *
- */
 @Slf4j
 @Getter
 @Setter

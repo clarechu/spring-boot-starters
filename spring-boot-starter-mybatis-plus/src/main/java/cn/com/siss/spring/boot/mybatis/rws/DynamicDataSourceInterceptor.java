@@ -20,12 +20,6 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 
-/**
- * 数据库源插件 DynamicDataSourcePlugin
- * @author John Deng
- *
- */
-
 @Intercepts({
 @Signature(type = Executor.class, method = "update", args = {
         MappedStatement.class, Object.class }),
