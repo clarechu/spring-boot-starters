@@ -13,7 +13,7 @@ spring:
 
 logging:
   level:
-    cn.vpclub: debug
+    cn.com.siss: debug
 
 ---
 
@@ -22,4 +22,4 @@ spring:
 
 logging:
   level:
-    cn.vpclub: warn
+    cn.com.siss: warn
