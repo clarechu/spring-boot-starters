@@ -17,7 +17,7 @@ spring:
     username: ${app.datasource.username}
     password: ${app.datasource.password}
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.cj.jdbc.Driver
+    driverClassName: com.mysql.jdbc.Driver
     druid:
       max-active: 20
       initial-size: 1

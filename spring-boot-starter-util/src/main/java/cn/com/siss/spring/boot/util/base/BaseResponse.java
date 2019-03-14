@@ -18,12 +18,8 @@ import java.io.Serializable;
 @Slf4j
 @Getter
 @Setter
-@ToString
-public class BaseResponse implements Serializable {
-
-    private Integer code;
-
-    private String message;
+@ToString(callSuper = true)
+public class BaseResponse<T> extends Response implements Serializable {
 
     private Object data;
 
@@ -33,7 +29,7 @@ public class BaseResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         if (o instanceof BaseResponse) {
             BaseResponse baseResponse = (BaseResponse) o;
-            if (baseResponse.getCode() .equals(this.code) && baseResponse.getMessage().equals(this.message) ) return true;
+            if (baseResponse.getCode() .equals(this.getCode()) && baseResponse.getMessage().equals(this.getMessage()) ) return true;
             return false;
         }
         return false;
