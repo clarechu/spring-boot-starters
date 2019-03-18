@@ -133,6 +133,7 @@ public class MybatisConfiguration {
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         DataSourceTransactionManager dataSourceTransactionManager = new DynamicDataSourceTransactionManager();
         dataSourceTransactionManager.setDataSource(dataSource);
+
         return dataSourceTransactionManager;
     }
 

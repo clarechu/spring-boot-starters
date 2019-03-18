@@ -19,7 +19,7 @@ spring:
   # 数据库配置
   datasource:
     name: ${app.datasource.name}
-    url: jdbc:mysql://${app.datasource.host:mysql-${spring.profiles.active}}:${app.datasource.port:3306}/${app.datasource.name:${app.project:moses}_${app.name}_${app.role}}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://${app.datasource.host:mysql-${spring.profiles.active}}:${3306:${app.datasource.port}}/${app.datasource.name}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&verifyServerCertificate=false&useSSL=true
     username: ${app.datasource.username}
     password: ${app.datasource.password}
     type: com.alibaba.druid.pool.DruidDataSource
