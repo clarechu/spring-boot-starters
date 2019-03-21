@@ -5,11 +5,11 @@
     <parent>
         <groupId>cn.com.siss</groupId>
         <artifactId>spring-boot-starters</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
 

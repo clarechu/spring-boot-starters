@@ -58,7 +58,7 @@ public class MessageCodeConstant implements Serializable {
     /**
      * 验证失败
      */
-    public static final String MESSAGE_SECURITY_AUTHFAILED = "message.security.authfailed";
+    public static final String MESSAGE_SECURITY_AUTH_FAILED = "message.security.auth.failed";
 
     /**
      * 无权限访问
@@ -68,11 +68,11 @@ public class MessageCodeConstant implements Serializable {
     /**
      * 插入失败
      */
-    public static final String MESSAGE_COMMON_INSERTFAILD = "message.common.insert.faild";
+    public static final String MESSAGE_COMMON_INSERT_FAILED = "message.common.insert.failed";
 
     /**
      * 删除失败
      */
-    public static final String MESSAGE_COMMON_DELETEFAILD = "message.common.delete.faild";
+    public static final String MESSAGE_COMMON_DELETE_FAILED = "message.common.delete.failed";
 
 }

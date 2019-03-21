@@ -28,7 +28,7 @@
         NOTES:
             please change each starters parent version once version is changed
     -->
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -36,7 +36,7 @@
         <java.version>1.8</java.version>
 
         <!-- module version -->
-        <starters.version>0.0.1-SNAPSHOT</starters.version>
+        <starters.version>0.0.2-SNAPSHOT</starters.version>
         <!--maven-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

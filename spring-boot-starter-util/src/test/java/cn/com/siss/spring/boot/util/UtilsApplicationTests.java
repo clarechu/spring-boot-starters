@@ -28,7 +28,7 @@ public class UtilsApplicationTests {
 
     @Test
     public void getBaseResponse() {
-        BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.CODE_1001.getCode());
+        BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_SECURITY_UNAUTHORIZED.getCode());
         BaseResponse baseResponse1 = new BaseResponse();
         baseResponse1.setCode(1001);
         baseResponse1.setMessage(MessageCodeConstant.MESSAGE_SECURITY_UNAUTHORIZED);
