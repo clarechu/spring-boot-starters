@@ -10,7 +10,8 @@
     </parent>
     <groupId>cn.com.siss</groupId>
     <artifactId>spring-boot-starters</artifactId>
-
+    <version>0.0.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <modules>
         <module>spring-boot-starter-dubbo</module>
@@ -23,13 +24,10 @@
         <module>spring-boot-starter-util</module>
         <module>spring-boot-starter-kafka</module>
         <module>spring-boot-starter-mybatis-plus</module>
+        <module>spring-boot-starter-mongo</module>
     </modules>
-    <!--
-        NOTES:
-            please change each starters parent version once version is changed
-    -->
-    <version>0.0.2-SNAPSHOT</version>
-    <packaging>pom</packaging>
+
+
 
     <properties>
         <!--jdk-->

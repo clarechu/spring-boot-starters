@@ -1,0 +1,10 @@
+spring:
+  rabbitmq:
+    host: ${rabbit.host}
+    port: ${rabbit.port}
+    username: ${rabbit.username}
+    password: ${rabbit.password}
+    virtual-host: /
+    publisher-returns: true
+    template:
+      mandatory: true

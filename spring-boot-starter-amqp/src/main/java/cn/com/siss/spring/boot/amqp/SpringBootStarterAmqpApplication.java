@@ -1,13 +1,13 @@
-package com.example.demo;
+package cn.com.siss.spring.boot.amqp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class SpringBootStarterAmqpApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(SpringBootStarterAmqpApplication.class, args);
     }
 
 }
