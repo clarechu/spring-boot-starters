@@ -9,7 +9,7 @@
     </parent>
     <groupId>cn.com.siss</groupId>
     <artifactId>spring-boot-starter-amqp</artifactId>
-    <version>${staters.version}</version>
+    <version>${starters.version}</version>
     <name>spring-boot-starter-amqp</name>
     <description>rabbit</description>
 

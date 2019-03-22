@@ -9,7 +9,7 @@
     </parent>
     <groupId>cn.com.siss</groupId>
     <artifactId>spring-boot-starter-redis</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>${starters.version}</version>
     <name>spring-boot-starter-redis</name>
 
     <properties>
