@@ -75,4 +75,10 @@ public class MessageCodeConstant implements Serializable {
      */
     public static final String MESSAGE_COMMON_DELETE_FAILED = "message.common.delete.failed";
 
+    public static final String MESSAGE_NULL_POINTER_EXCEPTION = "message.null.pointer.exception";
+
+    public static final String MESSAGE_RUNTIME_EXCEPTION = "message.runtime.exception";
+
+    public static final String MESSAGE_EXCEPTION = "message.exception";
+
 }
