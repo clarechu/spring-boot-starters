@@ -1,4 +1,4 @@
 spring:
   data:
     mongodb:
-      uri: ${mongo.username}:${mongo.password}@${mongo.host1}:${mongo.port},${mongo.host2}:${mongo.port},${mongo.host3}:${mongo.port}/${mongo.database}
+      uri: mongodb://${mongo.username}:${mongo.password}@${mongo.host1}:${mongo.port},${mongo.host2}:${mongo.port},${mongo.host3}:${mongo.port}/${mongo.database}
