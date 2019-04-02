@@ -81,7 +81,7 @@ public class MybatisConfiguration {
                 com.baomidou.mybatisplus.MybatisConfiguration mc = new com.baomidou.mybatisplus.MybatisConfiguration();
                 // 对于完全自定义的mapper需要加此项配置，才能实现下划线转驼峰
 
-                //mc.setMapUnderscoreToCamelCase(true);
+                mc.setMapUnderscoreToCamelCase(true);
 
                 mc.setDefaultScriptingLanguage(MybatisXMLLanguageDriver.class);
                 sessionFactoryBean.setConfiguration(mc);
