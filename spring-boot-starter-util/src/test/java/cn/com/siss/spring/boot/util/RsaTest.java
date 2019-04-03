@@ -4,6 +4,7 @@ package cn.com.siss.spring.boot.util;
 import cn.com.siss.spring.boot.util.rsa.RSACoder;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,7 +24,7 @@ public class RsaTest {
     @Test
     public void decode() throws FileNotFoundException {
         System.out.println(System.getProperty("user.dir"));
-        File dumpFile=new File(System.getProperty("user.dir") + "/src/test/java/cn/com/siss/spring/boot/util/app.rsa.pub");
+        File dumpFile = new File(System.getProperty("user.dir") + "/src/test/java/cn/com/siss/spring/boot/util/app.rsa.pub");
         FileReader fileReader = new FileReader(dumpFile);
     }
 
