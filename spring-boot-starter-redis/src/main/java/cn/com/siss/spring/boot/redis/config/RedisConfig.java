@@ -34,13 +34,13 @@ import java.lang.reflect.Method;
 public class RedisConfig extends CachingConfigurerSupport {
 
 
-    @Value("${app.redis.host}")
+    @Value("${spring.redis.host}")
     private String host;
 
-    @Value("${app.redis.port}")
+    @Value("${spring.redis.port}")
     private Integer port;
 
-    @Value("${app.redis.password}")
+    @Value("${spring.redis.password}")
     private String password;
 
     /**
@@ -68,8 +68,10 @@ public class RedisConfig extends CachingConfigurerSupport {
      */
     @Bean
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
-        RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
-        return rcm;
+        RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
+        cacheManager.setDefaultExpiration(1800L);
+        cacheManager.setUsePrefix(true);
+        return cacheManager;
     }
 
     /**
@@ -101,9 +103,10 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Bean
     public JedisConnectionFactory connectionFactory(){
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
+        JedisPoolConfig poolConfig = new JedisPoolConfig();
+        poolConfig.setMaxTotal(128);
+        poolConfig.setMaxIdle(200);
         jedisConnectionFactory.setUsePool(true);
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisConnectionFactory.setPoolConfig(jedisPoolConfig);
         jedisConnectionFactory.setHostName(host);
         jedisConnectionFactory.setPort(port);
         jedisConnectionFactory.setPassword(password);
