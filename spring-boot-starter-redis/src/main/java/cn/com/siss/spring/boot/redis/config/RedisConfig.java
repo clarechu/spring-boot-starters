@@ -3,16 +3,21 @@ package cn.com.siss.spring.boot.redis.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.lang.reflect.Method;
 
@@ -27,6 +32,17 @@ import java.lang.reflect.Method;
 @Configuration
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
+
+
+    @Value("${app.redis.host}")
+    private String host;
+
+    @Value("${app.redis.port}")
+    private Integer port;
+
+    @Value("${app.redis.password}")
+    private String password;
+
     /**
      * 生成key的策略
      * @return
@@ -47,14 +63,14 @@ public class RedisConfig extends CachingConfigurerSupport {
         };
     }
 
-    /*    *//**
+    /**//**
      * 管理缓存
-     *//*
+     */
     @Bean
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
         RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
         return rcm;
-    }*/
+    }
 
     /**
      * RedisTemplate配置
@@ -80,5 +96,17 @@ public class RedisConfig extends CachingConfigurerSupport {
 
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
+    }
+
+    @Bean
+    public JedisConnectionFactory connectionFactory(){
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
+        jedisConnectionFactory.setUsePool(true);
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisConnectionFactory.setPoolConfig(jedisPoolConfig);
+        jedisConnectionFactory.setHostName(host);
+        jedisConnectionFactory.setPort(port);
+        jedisConnectionFactory.setPassword(password);
+        return jedisConnectionFactory;
     }
 }
