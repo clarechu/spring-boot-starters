@@ -45,6 +45,12 @@
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
         <maven-archetype.version>2.4</maven-archetype.version>
 
+        <!--docker-->
+        <docker.registryUrl>registry.cn-shenzhen.aliyuncs.com</docker.registryUrl>
+        <docker.serverId>docker-aliyun</docker.serverId>
+        <docker.forceTags>true</docker.forceTags>
+        <docker.pushImage>true</docker.pushImage>
+        <dockerHost>http://localhost:2375</dockerHost>
         <!--testing-->
         <junit.version>4.12</junit.version>
         <powermock.version>1.6.6</powermock.version>
@@ -717,12 +723,24 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>io.gatling</groupId>
-                    <artifactId>gatling-maven-plugin</artifactId>
-                    <version>${gatling-plugin.version}</version>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.4.13</version>
                     <configuration>
-                        <resultsFolder>${project.basedir}/target/gatling</resultsFolder>
-                        <simulationsFolder>${project.basedir}/src/test/scala</simulationsFolder>
+                        <serverId>${docker.serverId}</serverId>
+                        <registryUrl>${docker.registryUrl}</registryUrl>
+                        <forceTags>${docker.forceTags}</forceTags>
+                        <pushImage>${docker.pushImage}</pushImage>
+                        <imageName>${docker.registryUrl}/siss/${project.artifactId}:${project.version}</imageName>
+                        <dockerHost>${dockerHost}</dockerHost>
+                        <dockerDirectory>${project.basedir}</dockerDirectory>
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <directory>${project.build.directory}</directory>
+                                <include>${project.artifactId}-${project.version}.jar</include>
+                            </resource>
+                        </resources>
                     </configuration>
                 </plugin>
             </plugins>
