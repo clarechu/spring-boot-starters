@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-boot-starter-dubbo</module>
+        <!--<module>spring-boot-starter-dubbo</module>-->
         <module>spring-boot-starter-mybatis</module>
         <module>spring-boot-starter-grpc</module>
         <module>spring-boot-starter-logging</module>
