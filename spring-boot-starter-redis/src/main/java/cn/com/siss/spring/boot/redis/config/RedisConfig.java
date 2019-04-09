@@ -17,6 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 import java.lang.reflect.Method;
@@ -45,6 +46,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 生成key的策略
+     *
      * @return
      */
     @Bean
@@ -63,7 +65,9 @@ public class RedisConfig extends CachingConfigurerSupport {
         };
     }
 
-    /**//**
+    /**/
+
+    /**
      * 管理缓存
      */
     @Bean
@@ -81,10 +85,8 @@ public class RedisConfig extends CachingConfigurerSupport {
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
-
         // 使用Jackson2JsonRedisSerialize 替换默认序列化
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
-
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
@@ -100,8 +102,8 @@ public class RedisConfig extends CachingConfigurerSupport {
         return redisTemplate;
     }
 
-    @Bean
-    public JedisConnectionFactory connectionFactory(){
+ /*   @Bean
+    public JedisPool connectionFactory() {
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         poolConfig.setMaxTotal(128);
@@ -110,6 +112,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         jedisConnectionFactory.setHostName(host);
         jedisConnectionFactory.setPort(port);
         jedisConnectionFactory.setPassword(password);
-        return jedisConnectionFactory;
-    }
+        JedisPool jedisPool = new JedisPool(poolConfig, host, port, 10000, password, 0);
+        return jedisPool;
+    }*/
 }

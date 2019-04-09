@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    include:
+      - redis
+
+app:
+  redis:
+    host: 47.107.182.62
+    password: 123456
