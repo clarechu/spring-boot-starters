@@ -36,16 +36,6 @@ import java.util.Arrays;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-
-    @Value("${spring.redis.host}")
-    private String host;
-
-    @Value("${spring.redis.port}")
-    private Integer port;
-
-    @Value("${spring.redis.password}")
-    private String password;
-
     /**
      * 管理缓存
      */

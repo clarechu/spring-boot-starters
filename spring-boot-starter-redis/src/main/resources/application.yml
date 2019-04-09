@@ -1,0 +1,8 @@
+app:
+  redis:
+    password: redis.123
+    nodes: redis-dev-1:26379,redis-dev-2:26379,redis-dev-3:26379
+spring:
+  profiles:
+    include:
+      - redis-sentry
