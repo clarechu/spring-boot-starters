@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by  vpclub on 16-10-9.
+ * Created by  siss on 16-10-9.
  * PackageName
  * ModifyDate  16-10-9
  * Description (cors prop 配置类)

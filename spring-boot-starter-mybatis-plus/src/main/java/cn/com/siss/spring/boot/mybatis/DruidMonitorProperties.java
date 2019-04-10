@@ -3,7 +3,7 @@ package cn.com.siss.spring.boot.mybatis;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Created by  vpclub on 16-10-9.
+ * Created by  siss on 16-10-9.
  * PackageName
  * ModifyDate  16-10-9
  * Description (constants prop 配置类)

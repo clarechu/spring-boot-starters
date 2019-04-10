@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by  vpclub on 16-10-17.
+ * Created by  siss on 16-10-17.
  * PackageName
  * ModifyDate  16-10-17
  * Description (CORS全局配置)

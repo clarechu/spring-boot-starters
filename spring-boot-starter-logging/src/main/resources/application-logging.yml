@@ -2,9 +2,10 @@
 logging:
   level:
     org.springframework: info
-    cn.vpclub: info
+    cn.com.siss: info
   pattern:
     console: "%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{64})  - %msg%n"
+  config: classpath:logback-spring.xml
 
 ---
 
