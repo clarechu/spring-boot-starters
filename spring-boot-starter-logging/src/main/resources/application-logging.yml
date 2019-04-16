@@ -3,10 +3,9 @@ logging:
   level:
     org.springframework: info
     cn.com.siss: info
-  pattern:
-    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(---){faint} %clr(%-80.80logger{79}){cyan} %clr(:){faint} %m%n%wEx"
   config: classpath:logback-spring.xml
-
+  pattern:
+    console: '%d{YYYY-MM-dd HH:mm:ss.SSS} ${PID} [%-25.25thread] %highlight(%-5level)  %green(%-40.40logger{39}) : %msg%n'
 ---
 
 spring:
