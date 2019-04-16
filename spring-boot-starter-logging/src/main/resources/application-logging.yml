@@ -4,7 +4,7 @@ logging:
     org.springframework: info
     cn.com.siss: info
   pattern:
-    console: "%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{64})  - %msg%n"
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(---){faint} %clr(%-80.80logger{79}){cyan} %clr(:){faint} %m%n%wEx"
   config: classpath:logback-spring.xml
 
 ---
