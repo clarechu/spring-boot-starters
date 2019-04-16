@@ -51,7 +51,7 @@
         <docker.forceTags>true</docker.forceTags>
         <docker.pushImage>true</docker.pushImage>
         <dockerHost>${env.DOCKER_HOST}</dockerHost>
-        <!--<project.groupName>demo</project.groupName>-->
+        <project.groupName>demo</project.groupName>
 
         <!--testing-->
         <junit.version>4.12</junit.version>
@@ -684,7 +684,7 @@
                         <registryUrl>${docker.registryUrl}</registryUrl>
                         <forceTags>${docker.forceTags}</forceTags>
                         <pushImage>${docker.pushImage}</pushImage>
-                        <imageName>${docker.registryUrl}/siss/${project.groupId}_${project.artifactId}:${project.version}</imageName>
+                        <imageName>${docker.registryUrl}/siss/${project.groupName}_${project.artifactId}:${project.version}</imageName>
                         <dockerHost>${dockerHost}</dockerHost>
                         <dockerDirectory>${project.basedir}</dockerDirectory>
                         <buildArgs>
