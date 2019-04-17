@@ -5,7 +5,7 @@ logging:
     cn.com.siss: info
   config: classpath:logback-spring.xml
   pattern:
-    console: '%d{YYYY-MM-dd HH:mm:ss.SSS} ${PID} [%-25.25thread] %highlight(%-5level)  %green(%-40.40logger{39}) : %msg%n'
+      console: '%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %green(%logger{64})  - %msg%n'
 ---
 
 spring:
