@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.com.siss.spring.boot.util.config.WebConfigure
+  cn.com.siss.spring.boot.util.config.WebConfigure,\
+  cn.com.siss.spring.boot.util.config.HttpClientConfigure
