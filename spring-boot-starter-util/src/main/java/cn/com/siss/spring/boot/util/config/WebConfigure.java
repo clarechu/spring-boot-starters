@@ -16,7 +16,7 @@ import java.util.List;
 
 @EnableWebMvc
 @Configuration
-public class WebConfigurer  extends WebMvcConfigurerAdapter {
+public class WebConfigure extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
