@@ -6,7 +6,7 @@
     <springProperty scope="context" name="LOG_HOME" source="logging.path" defaultValue="logs"/>
     <springProperty scope="context" name="GELF_HOST" source="logging.gelf.host" defaultValue="128.0.255.104"/>
     <springProperty scope="context" name="GELF_PORT" source="logging.gelf.port" defaultValue="12201"/>
-    <springProperty scope="context" name="LOG_PATTERN" source="logging.pattern.console" defaultValue=""/>
+    <springProperty scope="context" name="LOG_PATTERN" source="logging.pattern.console" defaultValue="%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %green(%logger{64})  - %msg%n"/>
     <!-- 控制台输出 -->
     <appender name="STDOUT"
               class="ch.qos.logback.core.ConsoleAppender">

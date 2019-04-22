@@ -3,6 +3,7 @@ package cn.com.siss.spring.boot.util.controller;
 import cn.com.siss.spring.boot.util.base.BackResponseUtil;
 import cn.com.siss.spring.boot.util.base.BaseResponse;
 import cn.com.siss.spring.boot.util.base.ReturnCodeEnum;
+import cn.com.siss.spring.boot.validate.exception.DataException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,6 +40,14 @@ public class ExceptionConfigController {
     public BaseResponse exception(Exception e){
         String message = e.getMessage();
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_EXCEPTION.getCode());
+        baseResponse.setData(message);
+        return baseResponse;
+    }
+
+    @ExceptionHandler(DataException.class)
+    public BaseResponse dataException(Exception e){
+        String message = e.getMessage();
+        BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_PAYMENT_TYPE_ERROR.getCode());
         baseResponse.setData(message);
         return baseResponse;
     }

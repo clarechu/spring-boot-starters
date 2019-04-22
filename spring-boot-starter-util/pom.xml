@@ -46,7 +46,14 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>cn.com.siss</groupId>
+            <artifactId>spring-boot-starter-validate</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.siss</groupId>
+            <artifactId>spring-boot-starter-validate</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
