@@ -5,7 +5,7 @@
     <parent>
         <groupId>cn.com.siss</groupId>
         <artifactId>spring-boot-starters</artifactId>
-        <version>0.0.4-SNAPSHOT</version>
+        <version>0.0.5-SNAPSHOT</version>
     </parent>
     <groupId>cn.com.siss</groupId>
     <artifactId>spring-boot-starter-mybatis-plus</artifactId>
