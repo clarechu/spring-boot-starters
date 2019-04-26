@@ -13,7 +13,7 @@ public class BasePageRequestParam implements Serializable {
 
     private Integer pageSize;
 
-    private Integer pageNumber;
+    private Integer pageNum;
 
 
 
