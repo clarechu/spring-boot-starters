@@ -17,4 +17,14 @@ public class BackResponseUtil {
         baseResponse.setMessage(message);
         return baseResponse;
     }
+
+    //获取 PageDataResponse
+    public static PageDataResponse setPageDataResponse(Integer code) {
+        PageDataResponse pageDataResponse = new PageDataResponse();
+        pageDataResponse.setCode(code);
+        String message = ReturnCodeEnum.getName(code);
+        pageDataResponse.setMessage(message);
+        return pageDataResponse;
+    }
+
 }
