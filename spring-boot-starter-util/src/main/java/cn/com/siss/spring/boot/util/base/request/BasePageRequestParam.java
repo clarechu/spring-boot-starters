@@ -9,6 +9,8 @@ import java.io.Serializable;
 @Getter
 public class BasePageRequestParam implements Serializable {
 
+    private String shopId;
+
     private Integer pageSize;
 
     private Integer pageNumber;
