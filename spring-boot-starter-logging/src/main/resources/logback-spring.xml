@@ -16,6 +16,11 @@
            <pattern>${LOG_PATTERN}</pattern>
         </encoder>
     </appender>
+
+    <filter class="hu.palacsint.logbacktest.SampleFilter">
+        <exceptionClassName>java.lang.Exception</exceptionClassName>
+    </filter>
+
     <!-- 按照每天生成日志文件 -->
     <appender name="FILE"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
