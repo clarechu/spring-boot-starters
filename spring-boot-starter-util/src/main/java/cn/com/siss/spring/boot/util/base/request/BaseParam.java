@@ -10,4 +10,10 @@ import java.io.Serializable;
 @Getter
 public class BaseParam implements Serializable {
 
+    private String openId;
+
+    private String cardId;
+
+    private String shopId;
+
 }
