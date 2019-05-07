@@ -21,7 +21,7 @@ import java.io.Serializable;
 @ToString(callSuper = true)
 public class BaseResponse<T> extends Response implements Serializable {
 
-    private Object data;
+    private T data;
 
     @Override
     public boolean equals(Object o) {
