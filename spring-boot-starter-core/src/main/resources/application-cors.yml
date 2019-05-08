@@ -2,4 +2,4 @@
 cors:
   enabled: true
   mappings: /**
-  allowedOrigins:
+  allowedOrigins: "*"
