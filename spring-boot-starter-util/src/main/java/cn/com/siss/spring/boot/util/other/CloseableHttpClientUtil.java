@@ -53,7 +53,7 @@ public class CloseableHttpClientUtil {
         return null;
     }*/
 
-    public static <T> BaseResponse<List<T>> httpGetList(String url, String token, Object param, Class<T> clz){
+    public static <T> BaseResponse<List<T>> postForList(String url, String token, Object param, Class<T> clz){
         HttpEntity httpEntity=null;
         try{
             HttpPost post=new HttpPost(url);
