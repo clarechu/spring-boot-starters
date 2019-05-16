@@ -64,8 +64,8 @@ public class CorsConfiguration extends WebMvcConfigurerAdapter {
         }
         logger.info("mappings is " + mappings);
         registry.addMapping(mappings)
-                .allowedOrigins(allowedOrigins)
-                .allowedHeaders(allowedHeaders)
+                .allowedOrigins("*")
+                .allowedHeaders("*")
                 .exposedHeaders(exposedHeaders)
                 .allowCredentials(allowCredentials).maxAge(maxAge);
     }

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice
 @ResponseBody
-//@Configurable
 public class ExceptionConfigController {
 
     @ExceptionHandler(NullPointerException.class)
