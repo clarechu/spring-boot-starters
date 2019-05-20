@@ -56,7 +56,7 @@ public class BeanComparableUtil{
         if (StringUtil.isEmpty(returnStr)){
             return null;
         }
-        return "以下数据有改动（"+returnStr+"),是否确定修改?";
+        return returnStr;
     }
 
     private static Map<String,Object> getFieldValueMapByObject (Object object,Map<String,String> fieldMap) throws Exception {
