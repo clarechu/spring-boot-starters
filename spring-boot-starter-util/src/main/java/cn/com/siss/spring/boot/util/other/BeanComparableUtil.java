@@ -28,7 +28,10 @@ public class BeanComparableUtil{
             String key=entry.getKey();
             Object originValue=entry.getValue();
             Object currentValue=currentMap.get(key);
-            if (!originValue.equals(currentValue)){
+            if (originValue==null && currentValue==null){
+                continue;
+            }else if (originValue!=null && currentValue!=null){
+                if (!originValue.equals(currentValue)){
                 /*if (originValue instanceof Short){
                     sb.append(propertyMap.get(key)).append("改动前：").append(originValue).append("改动后").append(currentValue).append(";");
                 }
@@ -41,8 +44,13 @@ public class BeanComparableUtil{
                 if (originValue instanceof Long){
                     sb.append(propertyMap.get(key)).append("改动前：").append(originValue).append("改动后").append(currentValue).append(";");
                 }*/
+                    sb.append(propertyMap.get(key)).append(";");
+                }
+                continue;
+            }else {
                 sb.append(propertyMap.get(key)).append(";");
             }
+
         }
         String returnStr=sb.toString();
         if (StringUtil.isEmpty(returnStr)){
