@@ -52,7 +52,7 @@ public class ExceptionConfigController {
     public BaseResponse nullPointerExceptionHandler(NullPointerException e){
         log.error(e.getMessage(),e);
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_NULL_POINTER_EXCEPTION.getCode());
-        baseResponse.setMessage(getMessage(e));
+        baseResponse.setMessage(getMessage(ReturnCodeEnum.MESSAGE_COMMON_SERVER_ERROR.getMessage()));
         return baseResponse;
     }
 
@@ -60,7 +60,7 @@ public class ExceptionConfigController {
     public BaseResponse runtimeException(RuntimeException e){
         log.error(e.getMessage(),e);
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_RUNTIME_EXCEPTION.getCode());
-        baseResponse.setMessage(getMessage(e));
+        baseResponse.setMessage(getMessage(ReturnCodeEnum.MESSAGE_COMMON_SERVER_ERROR.getMessage()));
         return baseResponse;
     }
 
@@ -68,14 +68,14 @@ public class ExceptionConfigController {
     public BaseResponse exception(Exception e){
         log.error(e.getMessage(),e);
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_EXCEPTION.getCode());
-        baseResponse.setMessage(getMessage(e));
+        baseResponse.setMessage(getMessage(ReturnCodeEnum.MESSAGE_COMMON_SERVER_ERROR.getMessage()));
         return baseResponse;
     }
 
     @ExceptionHandler(DataException.class)
     public BaseResponse dataException(Exception e){
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_PAYMENT_TYPE_ERROR.getCode());
-        baseResponse.setMessage(getMessage(e));
+        baseResponse.setMessage(e.getMessage());
         return baseResponse;
     }
 
@@ -87,8 +87,7 @@ public class ExceptionConfigController {
         return baseResponse;
     }
 
-    private String getMessage(Exception e){
-        String msg=e.getMessage();
+    private String getMessage(String msg){
         String message=messageMap.get(msg);
         if (StringUtil.isNotEmpty(message)){
             return message;
