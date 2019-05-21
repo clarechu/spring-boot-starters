@@ -54,6 +54,9 @@ public class HttpClientConfigure {
                 .build();
 
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(registry);
+        connectionManager.setMaxTotal(200);
+        connectionManager.setDefaultMaxPerRoute(20);
+
         RequestConfig requestConfig = RequestConfig.custom()
                 .setSocketTimeout(SocketTimeout)
                 .setConnectTimeout(ConnectionTimeout)
