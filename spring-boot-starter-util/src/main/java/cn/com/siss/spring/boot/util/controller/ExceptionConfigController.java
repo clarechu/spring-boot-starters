@@ -29,7 +29,7 @@ public class ExceptionConfigController {
         log.error(e.getMessage(),e);
         String message = e.getMessage();
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_NULL_POINTER_EXCEPTION.getCode());
-        baseResponse.setData(message);
+        baseResponse.setMessage(message);
         return baseResponse;
     }
 
@@ -38,7 +38,7 @@ public class ExceptionConfigController {
         log.error(e.getMessage(),e);
         String message = e.getMessage();
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_RUNTIME_EXCEPTION.getCode());
-        baseResponse.setData(message);
+        baseResponse.setMessage(message);
         return baseResponse;
     }
 
@@ -47,7 +47,7 @@ public class ExceptionConfigController {
         log.error(e.getMessage(),e);
         String message = e.getMessage();
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_EXCEPTION.getCode());
-        baseResponse.setData(message);
+        baseResponse.setMessage(message);
         return baseResponse;
     }
 
@@ -56,7 +56,7 @@ public class ExceptionConfigController {
         log.error(e.getMessage(),e);
         String message = e.getMessage();
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_PAYMENT_TYPE_ERROR.getCode());
-        baseResponse.setData(message);
+        baseResponse.setMessage(message);
         return baseResponse;
     }
 
@@ -64,7 +64,7 @@ public class ExceptionConfigController {
     public BaseResponse bindException(BindException e){
         log.error(e.getMessage(),e);
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_EXCEPTION.getCode());
-        baseResponse.setData(e.getAllErrors().get(0).getDefaultMessage());
+        baseResponse.setMessage(e.getAllErrors().get(0).getDefaultMessage());
         return baseResponse;
     }
 
