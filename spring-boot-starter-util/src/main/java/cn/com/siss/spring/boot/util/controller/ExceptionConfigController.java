@@ -3,6 +3,7 @@ package cn.com.siss.spring.boot.util.controller;
 import cn.com.siss.spring.boot.util.base.BackResponseUtil;
 import cn.com.siss.spring.boot.util.base.BaseResponse;
 import cn.com.siss.spring.boot.util.base.ReturnCodeEnum;
+import cn.com.siss.spring.boot.util.exception.BusinessException;
 import cn.com.siss.spring.boot.util.other.StringUtil;
 import cn.com.siss.spring.boot.validate.exception.DataException;
 import lombok.extern.slf4j.Slf4j;
@@ -66,6 +67,14 @@ public class ExceptionConfigController implements ResponseBodyAdvice {
         log.error(e.getMessage(),e);
         BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_RUNTIME_EXCEPTION.getCode());
         baseResponse.setMessage(getMessage(ReturnCodeEnum.MESSAGE_COMMON_SERVER_ERROR.getMessage()));
+        return baseResponse;
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public BaseResponse businessException(BusinessException e){
+        log.error(e.getMessage(),e);
+        BaseResponse baseResponse = BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_RUNTIME_EXCEPTION.getCode());
+        baseResponse.setMessage(e.getMessage());
         return baseResponse;
     }
 
