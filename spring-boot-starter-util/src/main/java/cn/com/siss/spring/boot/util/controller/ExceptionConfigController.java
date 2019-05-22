@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.validation.BindException;
@@ -111,7 +112,10 @@ public class ExceptionConfigController implements ResponseBodyAdvice {
 
     @Override
     public boolean supports(MethodParameter methodParameter, Class aClass) {
-        return true;
+        if (aClass!=null && aClass.getName().equals("org.springframework.http.converter.json.MappingJackson2HttpMessageConverter")){
+            return true;
+        }
+        return false;
     }
 
     @Override
