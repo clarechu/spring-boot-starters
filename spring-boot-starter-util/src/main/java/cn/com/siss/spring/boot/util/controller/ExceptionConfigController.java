@@ -107,8 +107,11 @@ public class ExceptionConfigController implements ResponseBodyAdvice {
 
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        BaseResponse baseResponse=(BaseResponse)o;
-        baseResponse.setMessage(getMessage(baseResponse.getMessage()));
-        return baseResponse;
+        if (o instanceof BaseResponse){
+            BaseResponse baseResponse=(BaseResponse)o;
+            baseResponse.setMessage(getMessage(baseResponse.getMessage()));
+            return baseResponse;
+        }
+        return o;
     }
 }
