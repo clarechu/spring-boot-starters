@@ -7,10 +7,15 @@ import cn.com.siss.spring.boot.util.other.StringUtil;
 import cn.com.siss.spring.boot.validate.exception.DataException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.core.MethodParameter;
+import org.springframework.http.MediaType;
+import org.springframework.http.server.ServerHttpRequest;
+import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
@@ -27,7 +32,7 @@ import java.util.Map;
 @ControllerAdvice
 @ResponseBody
 @Slf4j
-public class ExceptionConfigController {
+public class ExceptionConfigController implements ResponseBodyAdvice {
 
     private static Map<String,String> messageMap=new HashMap<>();
 
@@ -95,4 +100,15 @@ public class ExceptionConfigController {
         return msg;
     }
 
+    @Override
+    public boolean supports(MethodParameter methodParameter, Class aClass) {
+        return false;
+    }
+
+    @Override
+    public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+        BaseResponse baseResponse=(BaseResponse)o;
+        baseResponse.setMessage(getMessage(baseResponse.getMessage()));
+        return baseResponse;
+    }
 }
