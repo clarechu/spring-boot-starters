@@ -44,7 +44,7 @@ public class ExceptionConfigController implements ResponseBodyAdvice {
         messageMap.put("message.common.failed","失败");
         messageMap.put("message.common.information.nonexistence","信息不存在");
         messageMap.put("message.payment.type.error","支付方式错误");
-        messageMap.put("message.common.server.error","服务器处理异常");
+        messageMap.put("message.common.server.error","服务器繁忙");
         messageMap.put("message.common.parameters.missing","参数不全");
         messageMap.put("message.common.timeout","请求超时");
         messageMap.put("message.common.information.already.exists","信息已存在");
