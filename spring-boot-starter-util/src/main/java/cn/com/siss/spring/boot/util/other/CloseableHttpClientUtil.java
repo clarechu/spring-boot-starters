@@ -8,10 +8,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -56,6 +60,7 @@ public class CloseableHttpClientUtil {
 
     public static <T> BaseResponse<List<T>> postForList(String url, String token, Object param, Class<T> clz){
         HttpEntity httpEntity=null;
+        CloseableHttpResponse response =null;
         try{
             HttpPost post=new HttpPost(url);
             post.addHeader("Authorization", token);
@@ -63,7 +68,7 @@ public class CloseableHttpClientUtil {
             StringEntity requestEntity = new StringEntity(JSON.toJSONString(param),"utf-8");
             requestEntity.setContentEncoding("UTF-8");
             post.setEntity(requestEntity);
-            CloseableHttpResponse response = client.execute(post);
+            response=client.execute(post);
             httpEntity=response.getEntity();
             String res = EntityUtils.toString(httpEntity);
             BaseResponse baseResponse=JSON.parseObject(res, BaseResponse.class);
@@ -92,6 +97,33 @@ public class CloseableHttpClientUtil {
             }
         }
 
+    }
+
+    public static BaseResponse httpGet(String url){
+        HttpGet httpGet = new HttpGet(url);
+        CloseableHttpResponse response = null;
+        try {
+            response = client.execute(httpGet);
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != HttpStatus.SC_OK) {
+                return null;
+            } else {
+                String result = EntityUtils.toString(response.getEntity(), "UTF-8");
+                BaseResponse baseResponse=JSON.parseObject(result, BaseResponse.class);
+                return baseResponse;
+            }
+        } catch (Exception e) {
+            log.error("get请求失败"+url,e);
+        } finally {
+            if (response != null){
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    log.error("get请求失败"+url,e);
+                }
+            }
+        }
+        return BackResponseUtil.setBaseResponse(ReturnCodeEnum.MESSAGE_COMMON_FAILED.getCode());
     }
 
     /*public static void main(String[] args) {
