@@ -105,7 +105,7 @@
         <jackson-datatype.version>2.9.0</jackson-datatype.version>
         <jgroups-kubernetes.version>1.0.4-SNAPSHOT</jgroups-kubernetes.version>
         <quartz.version>2.2.1</quartz.version>
-        <jsr310.version>2.6.5</jsr310.version>
+        <jsr310.version>2.9.8</jsr310.version>
 
         <!--quartz-->
         <quartz.version>2.2.1</quartz.version>
