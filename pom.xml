@@ -87,7 +87,7 @@
         <!--message queue-->
         <spring.kafka.test.version>1.1.1.RELEASE</spring.kafka.test.version>
         <org.springframework.kafka.version>1.1.1.RELEASE</org.springframework.kafka.version>
-        <com.fasterxml.jackson.core>2.8.1</com.fasterxml.jackson.core>
+        <com.fasterxml.jackson.core>2.12.7.1</com.fasterxml.jackson.core>
 
         <!--service discovery-->
         <zkclient.version>0.8</zkclient.version>
